@@ -37,7 +37,8 @@ def update_todo(id):
         db.session.commit()  # No need to add; commit updates it
         return redirect(url_for("api.home_page"))  # updated
 
-    return render_template('update.html', task=task)
+    username = session.get('username')
+    return render_template('update.html', task=task, username=username)
 
 @api.route('/search', methods=['POST'])
 def search_todo():
@@ -54,4 +55,5 @@ def search_todo():
 
 @api.route('/about')
 def about_page():
-    return render_template('about.html')
+    username = session.get('username')
+    return render_template('about.html',username=username)
