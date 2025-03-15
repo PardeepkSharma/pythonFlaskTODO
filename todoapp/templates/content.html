@@ -1,0 +1,72 @@
+{% include 'base.html' %} 
+{% block content %}
+<div style="display: flex; justify-content:end;" class="pr-2">
+  <form action="/search" method="POST" class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" name='search' aria-label="Search">
+    <button type="submit" class="btn btn-info">Search</button>
+  </form>
+</div>
+<div class="container" style="max-width: 60%; margin: 0 auto">
+  <form action="/home" method="POST" class="mb-4">
+    <div class="form-group">
+      <label for="task_input" style="font-weight: 600;">Task:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="task_input"
+        name="task"
+        placeholder="Enter your todo here..."
+      />
+    </div>
+    <div class="form-group">
+      <label for="desc_input" style="font-weight: 600;">Description</label>
+      <input
+        type="text"
+        class="form-control"
+        id="desc_input"
+        name="desc"
+        placeholder="Enter description..."
+      />
+    </div>
+
+    <div class="text-right">
+      <button type="submit" class="btn btn-primary">Add</button>
+    </div>
+  </form>
+
+  {% if task_list|length == 0 %}
+  <div class="alert alert-dark" role="alert">No Task Found!</div>
+
+  {% else %}
+  <div class="table-container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Task</th>
+        <th scope="col">Description</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in task_list %}
+      <tr>
+        <td>{{loop.index}}</td>
+        <td>{{ item.task }}</td>
+        <td>{{ item.desc }}</td>
+        <td>
+          <a href="/update/{{item.id}}"
+            ><button class="btn btn-primary">Update</button></a
+          >
+          <a href="/delete/{{item.id}}"
+            ><button class="btn btn-danger">Delete</button></a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+  {% endif %}
+</div>
+{% endblock %}

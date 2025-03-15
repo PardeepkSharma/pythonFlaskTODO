@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous"
+  />
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <title>SignUp Page</title>
+</head>
+<body>
+  <div class="outer_wrapper">
+    <div class="img_wrapper child">
+      <img src="../static/images/todoimg.jpg" width="80%">
+    </div>
+    <div class="login_wrapper child">
+    <h1 style="text-align: center;">SignUp</h1>
+    <form action="/registration" method="POST" class="container">
+        <div class="form-group">
+            <label for="exampleInputEmail1">User name:</label>
+            <input type="text" class="form-control" id="exampleInputtext" name="username" aria-describedby="textHelp" placeholder="Enter username" required>
+          </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address:</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password:</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password" required>
+        </div>
+       
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      </div>
+</body>
+</html>

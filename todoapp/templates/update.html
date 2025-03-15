@@ -1,0 +1,27 @@
+
+{% include 'base.html' %}
+{% block content %}
+<div class="container" style=" max-width: 60%; margin: 0 auto;">
+<div style="text-align: center;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 500;
+"> Update Todo</div>
+  <form action="/update/{{task.id}}" method="POST" class="mb-4">
+    <div class="form-group">
+      <label for="task_input">Task:</label>
+      <input type="text" class="form-control" id="task_input" value="{{task.task}}" name="task" placeholder="Enter your todo here...">
+    </div>
+    <div class="form-group">
+      <label for="desc_input">Description</label>
+      <input type="text" class="form-control" id="desc_input" value="{{task.desc}}" name="desc" placeholder="Enter description...">
+    </div>
+    
+    <div class="text-right">
+      <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+</form>
+
+ 
+</div>
+{% endblock %}
